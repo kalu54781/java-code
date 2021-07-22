@@ -1,0 +1,72 @@
+public class Company {
+	
+	
+	private String Name;
+
+	private String Employees;
+
+	private String Teamlead;
+
+	public String getName() {
+	return Name;
+	}
+
+	public void setName(String name) {
+	Name = name;
+	}
+
+	public String getEmployees() {
+	return Employees;
+	}
+
+	public void setEmployees(String employees) {
+	Employees = employees;
+	}
+
+	public String getTeamlead() {
+	return Teamlead;
+	}
+
+	public void setTeamlead(String teamlead) {
+	Teamlead = teamlead;
+	}
+
+	}
+  
+  
+import java.util.Scanner;
+
+public class CompanyMain {
+
+		public static void main(String[] args) {
+			Company c = new Company();
+			boolean isValid=false; 
+			Scanner sc = new Scanner(System.in);
+		    System.out.print("Enter the comapany name");
+		    c.setName(sc.nextLine());
+		    System.out.print("Enter the Employee details");
+		    c.setEmployees(sc.nextLine());
+            System.out.print("Enter the team leader");
+		    c.setTeamlead(sc.nextLine());
+            String b = c.getEmployees();
+            String t = c.getTeamlead();
+		    String str[] = b.split(",");
+            
+		    for (int i = 0; i < str.length; i++)
+		    {
+		      if (str[i].contains(t))
+		      {
+		    	  System.out.println("Name:" + c.getName());
+		    	   System.out.println("Employees:" + c.getEmployees()); 
+		        System.out.println("Lead:" +str[i]);
+		         isValid=true; 
+		        break;
+		      }
+		    }
+		   
+		 if(!isValid)
+	    	   System.out.println("invalid input");
+	
+
+		}
+	}
