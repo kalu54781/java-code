@@ -62,7 +62,7 @@ public class DeluxeSeaViewRoom extends DeluxeRoom{
 	}
 }
 public class SuiteRoom extends HotelRoom {
-	protected int ratePerSqFeet;
+	private int ratePerSqFeet;
 
 	public SuiteRoom(int ratePerSqFeet2, String hotelName, Integer numberOfSqFeet, Boolean hasTV, Boolean hasWifi) {
 		super(hotelName, numberOfSqFeet, hasTV, hasWifi);
