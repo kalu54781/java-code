@@ -1,0 +1,186 @@
+package Hotel;
+
+public class HotelRoom {
+	
+	private  String hotelName ;
+	private int numberOfSqFeet ;
+	private boolean hasTV;
+	private boolean hasWifi;
+
+	public HotelRoom(String hotelName,Integer numberOfSqFeet,Boolean hasTV,Boolean hasWifi) {
+		 this.hotelName = hotelName;
+		 this.numberOfSqFeet =numberOfSqFeet;
+		 this.hasTV = hasTV;
+		 this.hasWifi = hasWifi;
+	 }
+	 
+	public int calculateTariff(int getRatePerSqFeet){
+			 
+			int cost = numberOfSqFeet*getRatePerSqFeet;
+			 
+			return cost;	 
+	 }
+	public int getRatePerSqFeet() {
+		
+		return 0;
+	}
+	public boolean isHasWifi() {
+		return hasWifi;
+	}
+}
+
+
+public class DeluxeRoom extends HotelRoom{
+	
+	
+	protected int ratePerSqFeet;
+	
+	
+	public DeluxeRoom(int ratePerSqFeet, String hotelName,Integer numberOfSqFeet,Boolean hasTV,Boolean hasWifi) {
+		
+		super(hotelName,numberOfSqFeet, hasTV, hasWifi);
+		this.ratePerSqFeet = ratePerSqFeet;
+		
+	}
+		
+    public int getRatePerSqFeet() {
+		
+	if (isHasWifi())
+		
+		return (ratePerSqFeet + 2);
+	else 
+		return ratePerSqFeet;
+	}
+}
+
+public class DeluxeSeaViewRoom extends DeluxeRoom{
+
+	public DeluxeSeaViewRoom(int ratePerSqFeet, String hotelName, Integer numberOfSqFeet, Boolean hasTV,
+			Boolean hasWifi) {
+		super(ratePerSqFeet, hotelName, numberOfSqFeet, hasTV, hasWifi);
+		// TODO Auto-generated constructor stub
+	}
+}
+public class SuiteRoom extends HotelRoom {
+	protected int ratePerSqFeet;
+
+	public SuiteRoom(int ratePerSqFeet2, String hotelName, Integer numberOfSqFeet, Boolean hasTV, Boolean hasWifi) {
+		super(hotelName, numberOfSqFeet, hasTV, hasWifi);
+		this.ratePerSqFeet = ratePerSqFeet2;
+	}
+	public int getRatePerSqFeet() {
+		
+		if (isHasWifi())
+			
+			return (ratePerSqFeet + 2);
+		else 
+			return ratePerSqFeet;
+		}
+	}
+
+import java.util.Scanner;
+public class HotelTest {
+	
+	public static void main(String[] args) {
+		
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Hotel Tariff Calculator\n1.Deluxe Room\n2.Deluxe AC Room\n3.Suite AC Room\nSelect Room Type:");
+		int n = sc.nextInt();
+		
+		boolean hasTV = true;
+		boolean hasWifi = true;
+		switch(n){  
+		    //Case statements  
+		    case 1: 
+		    	
+		    	  System.out.println("Enter the name of the hotel:");
+			       String hotel = sc.next();
+			       
+			       
+			       System.out.println("Room Square Feet Area:");
+			       int numberOfSqFeet = sc.nextInt();
+			       
+			       System.out.println("Room has TV (yes/no):");
+			       String TV = sc.next();
+			       if (TV.equals("no")) {
+			    	   hasTV = false;
+			       }
+			    	   
+			       System.out.println("Room has Wifi (yes/no):");
+			       String wifi = sc.next();
+			       if (wifi.equals("no")) {
+			    	   hasWifi = false;
+			       }
+			        
+			       int ratePerSqFeet=10;
+			       HotelRoom h = new HotelRoom(hotel, numberOfSqFeet, hasTV, hasWifi);
+			
+			       DeluxeRoom dr = new DeluxeRoom(ratePerSqFeet, hotel, numberOfSqFeet, hasTV, hasWifi);
+			       	
+			System.out.println("Room Tariff per day is:" +h.calculateTariff(dr.getRatePerSqFeet()));
+		    
+		    break;  
+		    case 2:
+		    	
+		    	System.out.println("Enter the name of the hotel:");
+			       String hotel1 = sc.next();
+			       
+			       
+			       System.out.println("Room Square Feet Area:");
+			       int numberOfSqFeet1 = sc.nextInt();
+			       
+			       System.out.println("Room has TV (yes/no):");
+			       String TV1 = sc.next();
+			       if (TV1.equals("no")) {
+			    	   hasTV = false;
+			       }
+			    	   
+			       System.out.println("Room has Wifi (yes/no):");
+			       String wifi1 = sc.next();
+			       if (wifi1.equals("no")) {
+			    	   hasWifi = false;
+			       }
+			        
+			       int ratePerSqFeet1=12;
+			       HotelRoom h1 = new HotelRoom(hotel1, numberOfSqFeet1, hasTV, hasWifi);
+			
+			       DeluxeRoom dr1 = new DeluxeRoom(ratePerSqFeet1, hotel1, numberOfSqFeet1, hasTV, hasWifi);
+			       	
+			System.out.println("Room Tariff per day is:" +h1.calculateTariff(dr1.getRatePerSqFeet()));
+		    
+		  
+		    break;  
+		    case 3:
+		    System.out.println("Enter the name of the hotel:");
+		       String hotel2 = sc.next();
+		       
+		       
+		       System.out.println("Room Square Feet Area:");
+		       int numberOfSqFeet2 = sc.nextInt();
+		       
+		       System.out.println("Room has TV (yes/no):");
+		       String TV2 = sc.next();
+		       if (TV2.equals("no")) {
+		    	   hasTV = false;
+		       }
+		    	   
+		       System.out.println("Room has Wifi (yes/no):");
+		       String wifi2 = sc.next();
+		       if (wifi2.equals("no")) {
+		    	   hasWifi = false;
+		       }
+		        
+		       int ratePerSqFeet2=15;
+		       HotelRoom h2 = new HotelRoom(hotel2, numberOfSqFeet2, hasTV, hasWifi);
+		
+		       SuiteRoom sr = new SuiteRoom(ratePerSqFeet2, hotel2, numberOfSqFeet2, hasTV, hasWifi); 
+		       System.out.println("Room Tariff per day is:" +h2.calculateTariff(sr.getRatePerSqFeet()));
+			    
+		    	
+		    break;  
+		    //Default case statement  
+		    default:System.out.println("Please enter a valid number"); 
+	}
+  }
+}
+
