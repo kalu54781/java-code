@@ -1,0 +1,30 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class ConsistentScorers {
+	
+	public static void main(String[] args) {
+		ArrayList<String>list1 = new ArrayList<>();
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter the top 5 scorers of IPL Season 13");
+		for(int i=0;i<5;i++) {
+			String s = sc.nextLine();
+			list1.add(s);
+		}
+		
+		ArrayList<String>list2 = new ArrayList<>();
+		Scanner sc1 = new Scanner(System.in);
+		System.out.println("Enter the top 5 scorers of IPL Season 12");
+		for(int i=0;i<5;i++) {
+			String s = sc.nextLine();
+			list2.add(s);
+		}	
+			
+		list1.retainAll(list2);
+		System.out.println("Consistent run scorers");
+			
+		for(String s : list1)
+		System.out.println(s);
+				
+	}
+}
